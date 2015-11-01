@@ -9,14 +9,13 @@ Author URI: http://URI_Of_The_Plugin_Author
 License: A "Slug" license name e.g. GPL2
 */
 
-/**
-include(dirname(__FILE__)."/wp_mbiblio-functions.php");
-define( 'MBIBLIO_PLUGIN_FILE', __FILE__ );
-register_activation_hook( MBIBLIO_PLUGIN_FILE, 'mm_activation' );
-function mm_activation(){
-// mach etwas
-}
- */
+
+
+
+
+
+
+
 
 include('wp-mbiblio-functions.php');
 
@@ -27,4 +26,5 @@ register_activation_hook(   __FILE__, array( 'Mbiblio_setup_cl', 'on_activation'
 register_deactivation_hook( __FILE__, array( 'Mbiblio_setup_cl', 'on_deactivation' ) );
 register_uninstall_hook(    __FILE__, array( 'Mbiblio_setup_cl', 'on_uninstall' ) );
 
-add_action( 'plugins_loaded', array( 'Mbiblio_setup_cl', 'init' ) );
+add_action( 'plugins_loaded', array( 'Mbiblio_setup_cl', 'init' )  );
+
