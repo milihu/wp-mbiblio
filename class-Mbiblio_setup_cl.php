@@ -115,6 +115,16 @@ class Mbiblio_setup_cl
 // Drop a custom db table
         global $wpdb;
         $wpdb->query("DROP TABLE IF EXISTS " . tab_models);
+        $wpdb->query("DROP TABLE IF EXISTS " . tab_attribute);
+        $wpdb->query("DROP TABLE IF EXISTS " . tab_mattr_assign);
+        $wpdb->query("DROP TABLE IF EXISTS " . tab_categories);
+        $wpdb->query("DROP TABLE IF EXISTS " . tab_mcat_assign);
+        $wpdb->query("DROP TABLE IF EXISTS " . tab_stock_loc);
+        $wpdb->query("DROP TABLE IF EXISTS " . tab_mstock_assign);
+        $wpdb->query("DROP TABLE IF EXISTS " . tab_mdoc_assign);
+        $wpdb->query("DROP TABLE IF EXISTS " . tab_pictures);
+        $wpdb->query("DROP TABLE IF EXISTS " . tab_mpic_assign);
+
 
     }
 
@@ -143,160 +153,160 @@ class Mbiblio_setup_cl
             add_option('jal_db_version', $jal_db_version);
         }
 
-//		if ( $this->check_table( tab_attribute ) == true ) {
-//
-//			$sql = "CREATE TABLE " . tab_attribute . " (
-//				    id mediumint(6) NOT NULL AUTO_INCREMENT,
-//					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-//					name tinytext NOT NULL,
-//					text text NOT NULL,
-//					url varchar(55) DEFAULT '' NOT NULL,
-//					UNIQUE KEY id (id)
-//	) $charset_collate;";
-//
-//			dbDelta( $sql );
-//			add_option( 'jal_db_version', $jal_db_version );
-//		}
-//
-//		if ( $this->check_table( tab_mattr_assign ) == true ) {
-//
-//			$sql = "CREATE TABLE " . tab_mattr . " (
-//				    id mediumint(6) NOT NULL AUTO_INCREMENT,
-//					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-//					name tinytext NOT NULL,
-//					text text NOT NULL,
-//					url varchar(55) DEFAULT '' NOT NULL,
-//					UNIQUE KEY id (id)
-//	) $charset_collate;";
-//
-//			dbDelta( $sql );
-//			add_option( 'jal_db_version', $jal_db_version );
-//		}
-//
-//		if ( $this->check_table( tab_categories ) == true ) {
-//
-//			$sql = "CREATE TABLE " . tab_categories . " (
-//				    id mediumint(6) NOT NULL AUTO_INCREMENT,
-//					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-//					name tinytext NOT NULL,
-//					text text NOT NULL,
-//					url varchar(55) DEFAULT '' NOT NULL,
-//					UNIQUE KEY id (id)
-//	) $charset_collate;";
-//
-//			dbDelta( $sql );
-//			add_option( 'jal_db_version', $jal_db_version );
-//		}
-//
-//		if ( $this->check_table( tab_mcat_assign ) == true ) {
-//
-//			$sql = "CREATE TABLE " . tab_mcat . " (
-//				    id mediumint(6) NOT NULL AUTO_INCREMENT,
-//					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-//					name tinytext NOT NULL,
-//					text text NOT NULL,
-//					url varchar(55) DEFAULT '' NOT NULL,
-//					UNIQUE KEY id (id)
-//	) $charset_collate;";
-//
-//			dbDelta( $sql );
-//			add_option( 'jal_db_version', $jal_db_version );
-//		}
-//
-//		if ( $this->check_table( tab_stock_loc ) == true ) {
-//
-//			$sql = "CREATE TABLE " . tab_stock_loc . " (
-//				    id mediumint(6) NOT NULL AUTO_INCREMENT,
-//					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-//					name tinytext NOT NULL,
-//					text text NOT NULL,
-//					url varchar(55) DEFAULT '' NOT NULL,
-//					UNIQUE KEY id (id)
-//	) $charset_collate;";
-//
-//			dbDelta( $sql );
-//			add_option( 'jal_db_version', $jal_db_version );
-//		}
-//
-//
-//		if ( $this->check_table( tab_mstock_assign ) == true ) {
-//
-//			$sql = "CREATE TABLE " . tab_mstock . " (
-//				    id mediumint(6) NOT NULL AUTO_INCREMENT,
-//					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-//					name tinytext NOT NULL,
-//					text text NOT NULL,
-//					url varchar(55) DEFAULT '' NOT NULL,
-//					UNIQUE KEY id (id)
-//	) $charset_collate;";
-//
-//			dbDelta( $sql );
-//			add_option( 'jal_db_version', $jal_db_version );
-//		}
-//
-//
-//		if ( $this->check_table( tab_pictures ) == true ) {
-//
-//			$sql = "CREATE TABLE " . tab_pictures . " (
-//				    id mediumint(6) NOT NULL AUTO_INCREMENT,
-//					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-//					name tinytext NOT NULL,
-//					text text NOT NULL,
-//					url varchar(55) DEFAULT '' NOT NULL,
-//					UNIQUE KEY id (id)
-//	) $charset_collate;";
-//
-//			dbDelta( $sql );
-//			add_option( 'jal_db_version', $jal_db_version );
-//		}
-//
-//
-//		if ( $this->check_table( tab_mpic_assign ) == true ) {
-//
-//			$sql = "CREATE TABLE " . tab_mpic_assign . " (
-//				    id mediumint(6) NOT NULL AUTO_INCREMENT,
-//					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-//					name tinytext NOT NULL,
-//					text text NOT NULL,
-//					url varchar(55) DEFAULT '' NOT NULL,
-//					UNIQUE KEY id (id)
-//				) $charset_collate;";
-//
-//			dbDelta( $sql );
-//			add_option( 'jal_db_version', $jal_db_version );
-//		}
-//
-//
-//		if ( $this->check_table( tab_docus ) == true ) {
-//
-//			$sql = "CREATE TABLE " . tab_docus . " (
-//				    id mediumint(6) NOT NULL AUTO_INCREMENT,
-//					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-//					name tinytext NOT NULL,
-//					text text NOT NULL,
-//					url varchar(55) DEFAULT '' NOT NULL,
-//					UNIQUE KEY id (id)
-//	) $charset_collate;";
-//
-//			dbDelta( $sql );
-//			add_option( 'jal_db_version', $jal_db_version );
-//		}
-//
-//
-//		if ( $this->check_table( tab_mdoc_assign ) == true ) {
-//
-//			$sql = "CREATE TABLE " . tab_mdoc_assign . " (
-//				    id mediumint(6) NOT NULL AUTO_INCREMENT,
-//					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-//					name tinytext NOT NULL,
-//					text text NOT NULL,
-//					url varchar(55) DEFAULT '' NOT NULL,
-//					UNIQUE KEY id (id)
-//	) $charset_collate;";
-//
-//			dbDelta( $sql );
-//			add_option( 'jal_db_version', $jal_db_version );
-//		}
+		if ( $this->check_table( tab_attribute ) == true ) {
+
+			$sql = "CREATE TABLE " . tab_attribute . " (
+				    id mediumint(6) NOT NULL AUTO_INCREMENT,
+					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					name tinytext NOT NULL,
+					text text NOT NULL,
+					url varchar(55) DEFAULT '' NOT NULL,
+					UNIQUE KEY id (id)
+	) $charset_collate;";
+
+			dbDelta( $sql );
+			add_option( 'jal_db_version', $jal_db_version );
+		}
+
+		if ( $this->check_table( tab_mattr_assign ) == true ) {
+
+			$sql = "CREATE TABLE " . tab_mattr . " (
+				    id mediumint(6) NOT NULL AUTO_INCREMENT,
+					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					name tinytext NOT NULL,
+					text text NOT NULL,
+					url varchar(55) DEFAULT '' NOT NULL,
+					UNIQUE KEY id (id)
+	) $charset_collate;";
+
+			dbDelta( $sql );
+			add_option( 'jal_db_version', $jal_db_version );
+		}
+
+		if ( $this->check_table( tab_categories ) == true ) {
+
+			$sql = "CREATE TABLE " . tab_categories . " (
+				    id mediumint(6) NOT NULL AUTO_INCREMENT,
+					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					name tinytext NOT NULL,
+					text text NOT NULL,
+					url varchar(55) DEFAULT '' NOT NULL,
+					UNIQUE KEY id (id)
+	) $charset_collate;";
+
+			dbDelta( $sql );
+			add_option( 'jal_db_version', $jal_db_version );
+		}
+
+		if ( $this->check_table( tab_mcat_assign ) == true ) {
+
+			$sql = "CREATE TABLE " . tab_mcat . " (
+				    id mediumint(6) NOT NULL AUTO_INCREMENT,
+					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					name tinytext NOT NULL,
+					text text NOT NULL,
+					url varchar(55) DEFAULT '' NOT NULL,
+					UNIQUE KEY id (id)
+	) $charset_collate;";
+
+			dbDelta( $sql );
+			add_option( 'jal_db_version', $jal_db_version );
+		}
+
+		if ( $this->check_table( tab_stock_loc ) == true ) {
+
+			$sql = "CREATE TABLE " . tab_stock_loc . " (
+				    id mediumint(6) NOT NULL AUTO_INCREMENT,
+					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					name tinytext NOT NULL,
+					text text NOT NULL,
+					url varchar(55) DEFAULT '' NOT NULL,
+					UNIQUE KEY id (id)
+	) $charset_collate;";
+
+			dbDelta( $sql );
+			add_option( 'jal_db_version', $jal_db_version );
+		}
+
+
+		if ( $this->check_table( tab_mstock_assign ) == true ) {
+
+			$sql = "CREATE TABLE " . tab_mstock . " (
+				    id mediumint(6) NOT NULL AUTO_INCREMENT,
+					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					name tinytext NOT NULL,
+					text text NOT NULL,
+					url varchar(55) DEFAULT '' NOT NULL,
+					UNIQUE KEY id (id)
+	) $charset_collate;";
+
+			dbDelta( $sql );
+			add_option( 'jal_db_version', $jal_db_version );
+		}
+
+
+		if ( $this->check_table( tab_pictures ) == true ) {
+
+			$sql = "CREATE TABLE " . tab_pictures . " (
+				    id mediumint(6) NOT NULL AUTO_INCREMENT,
+					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					name tinytext NOT NULL,
+					text text NOT NULL,
+					url varchar(55) DEFAULT '' NOT NULL,
+					UNIQUE KEY id (id)
+	) $charset_collate;";
+
+			dbDelta( $sql );
+			add_option( 'jal_db_version', $jal_db_version );
+		}
+
+
+		if ( $this->check_table( tab_mpic_assign ) == true ) {
+
+			$sql = "CREATE TABLE " . tab_mpic_assign . " (
+				    id mediumint(6) NOT NULL AUTO_INCREMENT,
+					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					name tinytext NOT NULL,
+					text text NOT NULL,
+					url varchar(55) DEFAULT '' NOT NULL,
+					UNIQUE KEY id (id)
+				) $charset_collate;";
+
+			dbDelta( $sql );
+			add_option( 'jal_db_version', $jal_db_version );
+		}
+
+
+		if ( $this->check_table( tab_docus ) == true ) {
+
+			$sql = "CREATE TABLE " . tab_docus . " (
+				    id mediumint(6) NOT NULL AUTO_INCREMENT,
+					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					name tinytext NOT NULL,
+					text text NOT NULL,
+					url varchar(55) DEFAULT '' NOT NULL,
+					UNIQUE KEY id (id)
+	) $charset_collate;";
+
+			dbDelta( $sql );
+			add_option( 'jal_db_version', $jal_db_version );
+		}
+
+
+		if ( $this->check_table( tab_mdoc_assign ) == true ) {
+
+			$sql = "CREATE TABLE " . tab_mdoc_assign . " (
+				    id mediumint(6) NOT NULL AUTO_INCREMENT,
+					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					name tinytext NOT NULL,
+					text text NOT NULL,
+					url varchar(55) DEFAULT '' NOT NULL,
+					UNIQUE KEY id (id)
+	) $charset_collate;";
+
+			dbDelta( $sql );
+			add_option( 'jal_db_version', $jal_db_version );
+		}
 
 
     }

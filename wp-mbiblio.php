@@ -10,13 +10,6 @@ License: A "Slug" license name e.g. GPL2
 */
 
 
-
-
-
-
-
-
-
 include('wp-mbiblio-functions.php');
 
 include('class-Mbiblio_setup_cl.php');
