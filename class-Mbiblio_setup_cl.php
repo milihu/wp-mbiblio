@@ -121,6 +121,7 @@ class Mbiblio_setup_cl
         $wpdb->query("DROP TABLE IF EXISTS " . tab_mcat_assign);
         $wpdb->query("DROP TABLE IF EXISTS " . tab_stock_loc);
         $wpdb->query("DROP TABLE IF EXISTS " . tab_mstock_assign);
+        $wpdb->query("DROP TABLE IF EXISTS " . tab_docus);
         $wpdb->query("DROP TABLE IF EXISTS " . tab_mdoc_assign);
         $wpdb->query("DROP TABLE IF EXISTS " . tab_pictures);
         $wpdb->query("DROP TABLE IF EXISTS " . tab_mpic_assign);
@@ -170,7 +171,7 @@ class Mbiblio_setup_cl
 
 		if ( $this->check_table( tab_mattr_assign ) == true ) {
 
-			$sql = "CREATE TABLE " . tab_mattr . " (
+			$sql = "CREATE TABLE " . tab_mattr_assign . " (
 				    id mediumint(6) NOT NULL AUTO_INCREMENT,
 					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 					name tinytext NOT NULL,
@@ -200,7 +201,7 @@ class Mbiblio_setup_cl
 
 		if ( $this->check_table( tab_mcat_assign ) == true ) {
 
-			$sql = "CREATE TABLE " . tab_mcat . " (
+			$sql = "CREATE TABLE " . tab_mcat_assign . " (
 				    id mediumint(6) NOT NULL AUTO_INCREMENT,
 					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 					name tinytext NOT NULL,
@@ -231,7 +232,7 @@ class Mbiblio_setup_cl
 
 		if ( $this->check_table( tab_mstock_assign ) == true ) {
 
-			$sql = "CREATE TABLE " . tab_mstock . " (
+			$sql = "CREATE TABLE " . tab_mstock_assign . " (
 				    id mediumint(6) NOT NULL AUTO_INCREMENT,
 					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 					name tinytext NOT NULL,
@@ -307,7 +308,6 @@ class Mbiblio_setup_cl
 			dbDelta( $sql );
 			add_option( 'jal_db_version', $jal_db_version );
 		}
-
 
     }
 }
