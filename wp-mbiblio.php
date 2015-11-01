@@ -19,6 +19,13 @@ function mm_activation(){
  */
 
 
-include('wp_mbiblio-functions.php');
+//include('wp_mbiblio-functions.php');
 
-register_activation_hook( __FILE__, 'mbiblio_install' );
+include('class-Mbiblio_setup_cl.php');
+
+
+register_activation_hook(   __FILE__, array( 'Mbiblio_setup_cl', 'on_activation' ) );
+register_deactivation_hook( __FILE__, array( 'Mbiblio_setup_cl', 'on_deactivation' ) );
+register_uninstall_hook(    __FILE__, array( 'Mbiblio_setup_cl', 'on_uninstall' ) );
+
+add_action( 'plugins_loaded', array( 'Mbiblio_setup_cl', 'init' ) );
