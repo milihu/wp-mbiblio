@@ -18,8 +18,7 @@ function mm_activation(){
 }
  */
 
-
-//include('wp_mbiblio-functions.php');
+include('wp-mbiblio-functions.php');
 
 include('class-Mbiblio_setup_cl.php');
 
