@@ -27,6 +27,9 @@ class Mbiblio_setup_cl
         check_admin_referer("activate-plugin_{$plugin}");
 
 
+
+
+
         $instance = new self;
         $instance->install_mbiblio();
 
